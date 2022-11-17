@@ -12,3 +12,9 @@ Não modifica nada.
 criação de um módulo próprio.
 
 
+### Leituras
+
+[renomear branchs](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name)
+
+
+
