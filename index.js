@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system
+ * Branch: file-system-read
  * Node.js as file server
  * Read files
  */
