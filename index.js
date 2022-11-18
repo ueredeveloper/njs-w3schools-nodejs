@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 
 /**
- * Gettin started 
+ * Renomeando arquivo .txt com rename() - fs
  */
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
