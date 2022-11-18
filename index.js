@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system-create-file-write-file
+ * Branch: file-system-write
  * Criando um arquivo em formtato .txt.
  */
 http.createServer(function(req, res){
