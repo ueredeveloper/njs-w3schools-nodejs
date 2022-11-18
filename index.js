@@ -2,18 +2,18 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system-create-file
+ * Branch: file-system-create-file-write-file
  * Criando um arquivo em formtato .txt.
  */
 http.createServer(function(req, res){
 
-  // criando um arquivo txt com fs.open()
-  fs.open('openfile.txt', 'w', function(err, file){
-    if (err) throw err;
-    console.log('Saved!')
+  //criando um arquivo com writeFile()
+  fs.writeFile('myfile3.txt', 'Hello Write File!', function(err){
+    if(err) throw err;
+    console.log("Save Write file!");
   })
   // lendo o arquivo criado
-  fs.readFile('openfile.txt', function(err, data){
+  fs.readFile('myfile3.txt', function(err, data){
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
