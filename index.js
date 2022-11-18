@@ -2,12 +2,18 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system
- * Node.js as file server
- * Read files
+ * Branch: file-system-create-file
+ * Criando um arquivo em formtato .txt.
  */
 http.createServer(function(req, res){
-  fs.readFile('demofile1.html', function(err, data){
+
+  // criando um arquivo no formato .txt
+  fs.appendFile('myfile1.txt', 'Hello Append File - Create File wiht fs', function(err){
+    if (err) throw err;
+    console.log('Saved');
+  });
+  // lendo o arquivo criado
+  fs.readFile('myfile1.txt', function(err, data){
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.write(data);
     return res.end();
