@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system-create-file-delete-file
+ * Branch: file-system-delete
  * Deletando um arquivo
  */
 
