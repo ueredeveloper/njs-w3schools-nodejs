@@ -2,20 +2,15 @@ var fs = require('fs');
 var http = require('http');
 
 /**
- * Branch: file-system-create-file-write-file
- * Criando um arquivo em formtato .txt.
+ * Branch: file-system-create-file-delete-file
+ * Deletando um arquivo
  */
 http.createServer(function(req, res){
 
-  //criando um arquivo com writeFile()
-  fs.writeFile('myfile3.txt', 'Hello Write File!', function(err){
-    if(err) throw err;
-    console.log("Save Write file!");
+  // deletando
+  fs.unlink("myfile1.txt", function(err){
+    if (err) throw error;
+    console.log('File deleted!')
   })
-  // lendo o arquivo criado
-  fs.readFile('myfile3.txt', function(err, data){
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
+ 
 }).listen(8080);
