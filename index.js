@@ -2,7 +2,9 @@ var http = require('http');
 var fs = require('fs');
 
 /**
- * Gettin started 
+ * Events in Node.js
+ * para rodar repositório adicionar no package.json 
+ *  scripts {start: node index.js}
  */
 http.createServer(function (req, res) {
 
