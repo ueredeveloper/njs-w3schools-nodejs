@@ -1,37 +1,37 @@
-var http = require("http");
-var fs = require('fs');
-var formidable = require('formidable');
+var http = require('http');
+var nodemailer = require('nodemailer');
+require('dotenv').config();
 
-
-/**
- * Upload files
- *  -> criar um formulário
- *  -> utilizar o módulo formidable
- */
-http.createServer(function (req, res) {
-
-  if (req.url == '/fileupload') {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      // está dando erro, file undefined
-      var oldpath = files.filetoupload.filepath;
-      var newpath = 'C:/Users/fabricio.barrozo/' + files.filetoupload.originalFilename;
-      fs.rename(oldpath, newpath, function(err){
-        if(err) throw err;
-        res.write('File uploaded and moved');
-        res.end();
-      });
-      res.write('File uploaded!');
-      res.end();
-    })
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.USER,
+    pass: process.env.USERPASS
   }
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.write(`
-    <form action="fileupload" method="post" encrypted="multpart/form-data">
-      <input name="file" type="file" name="fileupload"></input><br>
-      <input type="submit"/>
-    </form>
-  `);
-  return res.end();
+});
 
-}).listen(8080);
+var mailOptions = {
+  from: process.env.USER,
+  to: 'ueredeveloper@gmail.com',
+  subject: 'Hello World Subject',
+  //text: 'Hello World Text'
+  html: `<h1> Hello World HTML Email</h1>
+        <h6> This is an example how to send html email</h6>
+        `
+}
+
+send();
+
+// está dando erro:
+//  response: '535-5.7.8 Username and Password not accepted. Learn more at\n' +
+
+async function send() {
+    const result = await transporter.sendMail({
+        from: process.env.USER,
+        to: 'ueredeveloper@gmail.com',
+        subject: 'Hello World',
+        text: 'Hello World'
+    });
+
+    console.log(JSON.stringify(result, null, 4));
+}
