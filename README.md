@@ -16,5 +16,12 @@ criação de um módulo próprio.
 
 [renomear branchs](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name)
 
+ERROS:
+
+```
+Error: connect ETIMEDOUT 18.211.187.226:5432
+``` 
+
+
 
 
