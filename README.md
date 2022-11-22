@@ -16,5 +16,7 @@ criação de um módulo próprio.
 
 [renomear branchs](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name)
 
+[conexão mssql](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/windows/step/2.html)
+
 
 

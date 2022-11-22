@@ -1,9 +1,28 @@
-var http = require('http');
+var Connection = require('tedious').Connection;
+var Request = require('tedious').Request;
+var TYPES = require('tedious').TYPES;
 
-/**
- * Gettin started 
- */
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Hello World!');
-}).listen(8080);
+// Create connection to database
+var config = {
+  server: process.env['SQLHOST'],
+  authentication: {
+    type: 'default',
+    options: {
+      userName: process.env['SQLUSERNAME'],
+      password: process.env['SQLPASSWORD']
+    }
+  },
+  options: {
+    database: process.env['SQLDATABASE']
+  }
+}
+var connection = new Connection(config);
+
+// Attempt to connect and execute queries if connection goes through
+connection.on('connect', function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('Connected');
+  }
+});
