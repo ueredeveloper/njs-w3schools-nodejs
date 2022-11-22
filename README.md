@@ -5,27 +5,30 @@
 Instalei o pacote httt - npm i http, crei o README.md e .gitignore.
 
 ## Get Started
-Não modifica nada.
 
 ## What is a module in Node.js
 
 criação de um módulo próprio.
 
 
-### Leituras
+### -Leituras
 
-[renomear branchs](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name)
+[Renomear Branch](https://stackoverflow.com/questions/30590083/how-do-i-rename-both-a-git-local-and-remote-branch-name)
 
-[conexão mssql](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/windows/step/2.html)
+[Conexão MSSQL](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/windows/step/2.html)
 
 [Connect to Azure MSSQL](https://www.concurrency.com/blog/january-2017/connect-to-azure-sql-database-with-nodejs-and-mssq)
 
 
-### Conexão MS SQL server
+### - Conexão MS SQL server
 
-#### JDBC
+### -  JDBC
 
+```
 jdbc:sqlserver://SQLHOST:SQLPORT;database=SQLDATABASE;user=SQLUSER@srvsqlhomolog1;password=SQLPASSWORD;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+ ```
 
-conexão de sucesso:
+### - Conexão de Sucesso:
 [step 3 - proof of ...](https://learn.microsoft.com/pt-br/sql/connect/node-js/step-3-proof-of-concept-connecting-to-sql-using-node-js?view=sql-server-ver16)
+
+[aula - sequelize - parte da conexão ](https://www.youtube.com/watch?v=UdbvIjpw87k)

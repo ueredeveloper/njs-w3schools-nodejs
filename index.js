@@ -11,3 +11,5 @@ async function test() {
 }
 
 test();
+
+//timestamps: false não criar as colunas de data
