@@ -11,16 +11,22 @@ var config = {
     }
   },
   options: {
-    // If you are on Microsoft Azure, you need encryption:
-    encrypt: true,
+ 
     database: process.env['SQLHOST'],
+    port: 1433,
+    // If you are on Microsoft Azure, you need encryption:
+    //encrypt: true,
   }
 };
 var connection = new Connection(config);
 connection.on('connect', function (err) {
-  // If no error, then good to proceed.
-  console.log("Connected");
-  executeStatement();
+  if (err) {
+    console.error('error', err.message);
+  } else {
+    console.log('querydatabase')
+    queryDatabase();
+  }
+  connection.close();
 });
 
 connection.connect();
@@ -28,12 +34,26 @@ connection.connect();
 var Request = require('tedious').Request;
 var TYPES = require('tedious').TYPES;
 
-function executeStatement() {
-  //select col_ID from Colaborador
-  //SELECT * FROM Colaborador
+function queryDatabase() {
+  console.log("Reading rows from the Table...");
 
-  request = new Request("select col_ID from Colaborador", function (err, rowCount, rows) {
-    console.log(err, rowCount, rows)
+  // Read all rows from table
+  const request = new Request(
+    `SELECT * FROM [dbo].[Colaborador]`,
+    (err, rowCount) => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        console.log(`${rowCount} row(s) returned`);
+      }
+    }
+  );
+
+  request.on("row", columns => {
+    columns.forEach(column => {
+      console.log("%s\t%s", column.value);
+    });
   });
+
   connection.execSql(request);
-}  
+}
