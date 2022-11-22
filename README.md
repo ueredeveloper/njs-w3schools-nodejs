@@ -19,3 +19,13 @@ criação de um módulo próprio.
 [banco mysql free - freemysqlhosting](https://www.freemysqlhosting.net/account/)
 
 
+### SQL SERVER UTILIZADO
+
+Microsoft SQL Server Management Studio						11.0.2100.60
+Microsoft Data Access Components (MDAC)						10.0.15063.0
+Microsoft MSXML						3.0 6.0 
+Microsoft Internet Explorer						9.11.15063.0
+Microsoft .NET Framework						4.0.30319.42000
+Sistema Operacional						6.3.15063
+
+

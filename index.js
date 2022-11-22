@@ -1,12 +1,11 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const { SQLDATABASE, SQLUSERNAME, SQLPASSWORD, SQLHOST } = process.env;
+const { ADASA_DATABASE, ADASA_USERNAME, ADASA_PASSWORD, ADASA_HOST } = process.env;
 
-var sequelize = new Sequelize(SQLDATABASE, SQLUSERNAME, SQLPASSWORD, {
-  host: SQLHOST,
+var sequelize = new Sequelize(ADASA_DATABASE, ADASA_USERNAME, ADASA_PASSWORD, {
+  host: ADASA_HOST,
   dialect: 'mssql',
-
   pool: {
     max: 5,
     min: 0,
@@ -17,24 +16,23 @@ var sequelize = new Sequelize(SQLDATABASE, SQLUSERNAME, SQLPASSWORD, {
   }
 });
 
-let Colaborador = sequelize.define('Colaborador', {
-  col_Nome: {
+let Usuario = sequelize.define('USUARIO', {
+  NOME: {
     type: Sequelize.STRING
   },
-  tableName: 'Colaborador',
+  tableName: 'USUARIO',
   timestamps: false
 });
 
 async function selectAll (){
-  let colaborador = await Colaborador.sync().then(function () {
-    return  Colaborador.findAll({
-      attributes: ['col_Nome'], 
+  let usuario = await Usuario.sync().then(function () {
+    return  Usuario.findAll({
+      attributes: ['NOME'], 
       raw: true
     })
   });
 
-  colaborador.forEach(c=> {console.log(c)})
+  usuario.forEach(u=> {console.log(u)})
 }
 
 selectAll()
-
