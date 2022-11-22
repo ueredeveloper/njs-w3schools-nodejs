@@ -18,5 +18,11 @@ criação de um módulo próprio.
 
 [conexão mssql](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/windows/step/2.html)
 
+[Connect to Azure MSSQL](https://www.concurrency.com/blog/january-2017/connect-to-azure-sql-database-with-nodejs-and-mssq)
 
 
+### Conexão MS SQL server
+
+#### JDBC
+
+jdbc:sqlserver://SQLHOST:SQLPORT;database=SQLDATABASE;user=SQLUSER@srvsqlhomolog1;password=SQLPASSWORD;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;

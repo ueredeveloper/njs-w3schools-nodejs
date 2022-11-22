@@ -1,28 +1,67 @@
-var Connection = require('tedious').Connection;
-var Request = require('tedious').Request;
-var TYPES = require('tedious').TYPES;
+var sql = require("mssql");
 
-// Create connection to database
-var config = {
+// segunda forma de conexão mssql
+
+var dbConfig = {
   server: process.env['SQLHOST'],
-  authentication: {
-    type: 'default',
-    options: {
-      userName: process.env['SQLUSERNAME'],
-      password: process.env['SQLPASSWORD']
-    }
-  },
+  database: process.env['SQLHOST'],
+  user: process.env['SQLUSERNAME'],
+  password: process.env['SQLPASSWORD'],
+  port: 1433,
   options: {
-    database: process.env['SQLDATABASE']
+    encrypt: true,
+    trustServerCertificate: false
+  },
+  pool: {
+    max: 30,
+    min: 0,
+    idleTimeoutMillis: 30000
   }
-}
-var connection = new Connection(config);
 
-// Attempt to connect and execute queries if connection goes through
-connection.on('connect', function(err) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log('Connected');
-  }
-});
+
+  
+  /*
+    encrypt=true;
+                trustServerCertificate=false;
+                hostNameInCertificate=*.database.windows.net;
+                loginTimeout=30;
+          
+          fabricio.barrozo@srvsqlhomolog1*/
+
+};
+
+// This function connects to a SQL server, executes a SELECT statement,
+// and displays the results in the console.
+async function getCustomers() {
+  // Create connection instance
+  var conn = new sql.ConnectionPool(dbConfig);
+
+  conn.connect()
+    // Successfull connection
+    .then(function() {
+
+      // Create request instance, passing in connection instance
+      var req = new sql.Request(conn);
+
+      // Call mssql's query method passing in params
+      req.query("SELECT * FROM [dbo].[Colaborador]")
+        .then(function(recordset) {
+          console.log(recordset);
+          conn.close();
+        })
+        // Handle sql statement execution errors
+        .catch(function(err) {
+          console.log(err);
+          conn.close();
+        })
+
+    })
+    // Handle connection errors
+    .catch(function(err) {
+      console.log(err);
+      conn.close();
+    });
+}
+
+
+getCustomers();
