@@ -1,4 +1,5 @@
 var sql = require("mssql");
+require('dotenv').config();
 
 // segunda forma de conexão mssql
 
@@ -10,7 +11,6 @@ var dbConfig = {
   port: 1433,
   options: {
     encrypt: true,
-    trustServerCertificate: false
   },
   pool: {
     max: 30,
@@ -44,7 +44,7 @@ async function getCustomers() {
       var req = new sql.Request(conn);
 
       // Call mssql's query method passing in params
-      req.query("SELECT * FROM [dbo].[Colaborador]")
+      req.query("SELECT * FROM Colaborador")
         .then(function(recordset) {
           console.log(recordset);
           conn.close();
