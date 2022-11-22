@@ -1,39 +1,32 @@
+const sql = require('mssql');
 require('dotenv').config();
-var Connection = require('tedious').Connection;
 
-var config = {
-  server: process.env['SQLHOST'],
-  authentication: {
-    type: 'default',
-    options: {
-      userName: process.env['SQLUSERNAME'],
-      password: process.env['SQLPASSWORD'],
-    }
+const sqlConfig = {
+  user:  process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.SQLDATABASE,
+  server: process.env.SQLHOST,
+  port: 1433,
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000
   },
   options: {
-    // If you are on Microsoft Azure, you need encryption:
-    encrypt: true,
-    database: process.env['SQLHOST'],
+    encrypt: true, // for azure
+    trustServerCertificate: false // change to true for local dev / self-signed certs
   }
-};
-var connection = new Connection(config);
-connection.on('connect', function (err) {
-  // If no error, then good to proceed.
-  console.log("Connected");
-  executeStatement();
-});
+}
 
-connection.connect();
+async function select () {
+  try {
+    // make sure that any items are correctly URL encoded in the connection string
+    await sql.connect(sqlConfig)
+    const result = await sql.query`select * from Colaborador`
+    console.dir(result)
+   } catch (err) {
+    console.log(err)
+   }
+}
 
-var Request = require('tedious').Request;
-var TYPES = require('tedious').TYPES;
-
-function executeStatement() {
-  //select col_ID from Colaborador
-  //SELECT * FROM Colaborador
-
-  request = new Request("select col_ID from Colaborador", function (err, rowCount, rows) {
-    console.log(err, rowCount, rows)
-  });
-  connection.execSql(request);
-}  
+select();
