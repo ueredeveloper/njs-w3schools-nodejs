@@ -26,3 +26,6 @@ criação de um módulo próprio.
 #### JDBC
 
 jdbc:sqlserver://SQLHOST:SQLPORT;database=SQLDATABASE;user=SQLUSER@srvsqlhomolog1;password=SQLPASSWORD;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+
+conexão de sucesso:
+[step 3 - proof of ...](https://learn.microsoft.com/pt-br/sql/connect/node-js/step-3-proof-of-concept-connecting-to-sql-using-node-js?view=sql-server-ver16)
