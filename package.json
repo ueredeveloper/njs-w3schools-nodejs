@@ -15,6 +15,7 @@
     "msnodesqlv8": "^2.7.0",
     "mssql": "^9.0.1",
     "mysql": "^2.18.1",
+    "sequelize": "^6.25.8",
     "tedious": "^15.1.2"
   }
 }
