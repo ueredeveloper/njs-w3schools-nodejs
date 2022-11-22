@@ -1,32 +1,26 @@
 const sql = require('mssql');
 require('dotenv').config();
 
-const sqlConfig = {
-  user:  process.env.USERNAME,
-  password: process.env.PASSWORD,
+let config = {
+  localhost: process.env.SQLHOST,
   database: process.env.SQLDATABASE,
-  server: process.env.SQLHOST,
-  port: 1433,
-  pool: {
-    max: 10,
-    min: 0,
-    idleTimeoutMillis: 30000
-  },
-  options: {
-    encrypt: true, // for azure
-    trustServerCertificate: false // change to true for local dev / self-signed certs
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD
+}
+
+async function selecionarColaborador () {
+  let { localhost, database, username, password } = config;
+  console.log('conexão inicializando')
+
+  try {
+    // make sure that any items are correctly URL encoded in the connection string
+    //await sql.connect(`Server=${localhost},1433;Database=${database};User Id=${username};Password=${password};Encrypt=true`)
+    await sql.connect(`Server=${localhost};Database=${database};Authentication=azure-active-directory-password;User Id=${username};Password=${password};Encrypt=true`)
+    const result = await sql.query`select * from Colaborador`
+    console.dir(result);
+  } catch (err) {
+    console.log(err);
   }
 }
 
-async function select () {
-  try {
-    // make sure that any items are correctly URL encoded in the connection string
-    await sql.connect(sqlConfig)
-    const result = await sql.query`select * from Colaborador`
-    console.dir(result)
-   } catch (err) {
-    console.log(err)
-   }
-}
-
-select();
+selecionarColaborador();
