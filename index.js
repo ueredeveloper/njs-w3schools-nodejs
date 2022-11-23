@@ -1,6 +1,10 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
+/**
+ * Conexão com sequelize, azure e sql server funcionando.
+ */
+
 const { SQLDATABASE, SQLUSERNAME, SQLPASSWORD, SQLHOST } = process.env;
 
 var sequelize = new Sequelize(SQLDATABASE, SQLUSERNAME, SQLPASSWORD, {
@@ -13,7 +17,7 @@ var sequelize = new Sequelize(SQLDATABASE, SQLUSERNAME, SQLPASSWORD, {
     idle: 10000
   },
   define: {
-    
+
     freezeTableName: true
   }
 });
