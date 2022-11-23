@@ -1,5 +1,8 @@
 const connection = require('./connection-sequelize.js');
 
+/**
+ * 
+ */
 
 async function test() {
   try {
