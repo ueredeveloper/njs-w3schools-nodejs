@@ -1,27 +1,31 @@
 require('dotenv').config();
 var Connection = require('tedious').Connection;
 
+const { SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD } = process.env;
+
+console.log(SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD)
+
 var config = {
-  server: process.env['SQLHOST'],
+  server: SQLHOST,
   authentication: {
     type: 'default',
     options: {
-      userName: process.env['SQLUSERNAME'],
-      password: process.env['SQLPASSWORD'],
+      userName: SQLUSERNAME,
+      password: SQLPASSWORD,
     }
   },
   options: {
- 
-    database: process.env['SQLHOST'],
+
+    database: SQLDATABASE,
     port: 1433,
     // If you are on Microsoft Azure, you need encryption:
-    //encrypt: true,
+    encrypt: true,
   }
 };
 var connection = new Connection(config);
 connection.on('connect', function (err) {
   if (err) {
-    console.error('error', err.message);
+    console.error('error ---------> ', err.message);
   } else {
     console.log('querydatabase')
     queryDatabase();
@@ -41,8 +45,9 @@ function queryDatabase() {
   const request = new Request(
     `SELECT * FROM [dbo].[Colaborador]`,
     (err, rowCount) => {
+      console.log(rowCount)
       if (err) {
-        console.error(err.message);
+        console.error('error ------------> ', err.message);
       } else {
         console.log(`${rowCount} row(s) returned`);
       }
