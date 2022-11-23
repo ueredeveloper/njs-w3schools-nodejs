@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "http": "^0.0.1-security"
+    "dotenv": "^16.0.3",
+    "http": "^0.0.1-security",
+    "sequelize": "^6.25.8",
+    "tedious": "^15.1.2"
   }
 }

@@ -13,6 +13,7 @@ var sequelize = new Sequelize(SQLDATABASE, SQLUSERNAME, SQLPASSWORD, {
     idle: 10000
   },
   define: {
+    
     freezeTableName: true
   }
 });
