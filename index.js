@@ -1,13 +1,19 @@
 var sql = require("mssql");
 require('dotenv').config();
 
-// segunda forma de conexão mssql
+/**
+ * Conexão com azure utilizando o mssql funcionando.
+ */
+
+const { SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD } = process.env;
+
+console.log(SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD);
 
 var dbConfig = {
-  server: process.env['SQLHOST'],
-  database: process.env['SQLHOST'],
-  user: process.env['SQLUSERNAME'],
-  password: process.env['SQLPASSWORD'],
+  server: SQLHOST,
+  database: SQLDATABASE,
+  user: SQLUSERNAME,
+  password: SQLPASSWORD,
   port: 1433,
   options: {
     encrypt: true,
@@ -17,17 +23,6 @@ var dbConfig = {
     min: 0,
     idleTimeoutMillis: 30000
   }
-
-
-  
-  /*
-    encrypt=true;
-                trustServerCertificate=false;
-                hostNameInCertificate=*.database.windows.net;
-                loginTimeout=30;
-          
-          fabricio.barrozo@srvsqlhomolog1*/
-
 };
 
 // This function connects to a SQL server, executes a SELECT statement,
@@ -62,6 +57,5 @@ async function getCustomers() {
       conn.close();
     });
 }
-
 
 getCustomers();
