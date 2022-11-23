@@ -14,9 +14,7 @@ app.get('/', function (req, res) {
         password: ADASA_PASSWORD,
         server: ADASA_HOST, 
         database: ADASA_DATABASE,
-        
-          trustServerCertificate: true,
-        
+        trustServerCertificate: true,
     };
 
     // connect to your database

@@ -23,6 +23,9 @@ criação de um módulo próprio.
 
 Testado em um banco mssql no azure e tudo ok, porém no trabalho utilizamos o SQL Server 2012 que pelo que vi não tem suporte no sequelize. 
 
+23/11/2022
+Tive que fazer a conexão sem o sequelize, utilizei o `mssql` e express para testar. 
+
 Versão do trabalho:
 
 Microsoft SQL Server Management Studio						11.0.2100.60
