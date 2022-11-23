@@ -1,6 +1,11 @@
 require('dotenv').config();
 var Connection = require('tedious').Connection;
 
+/**
+ * Conexão SQL Server Azure.
+ * AINDA NÃO ESTÁ FUNCIONANDO.
+ */
+
 const { SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD } = process.env;
 
 console.log(SQLDATABASE, SQLHOST, SQLUSERNAME, SQLPASSWORD)
