@@ -1,0 +1,97 @@
+
+
+<style>
+#map {
+  height: 100%;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+</style>
+
+<div id="map"></div>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&v=weekly"
+defer
+></script>
+
+<script>
+
+  let map;
+
+function initMap() {
+    //-47.73739483545068,-15.724018294609081
+  const myLatLng = { lat: -15.724018294609081, lng: -47.73739483545068 };
+  map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 11,
+    center: myLatLng,
+  });
+
+  let rings = [
+    {
+        "lat": -15.724018294609081,
+        "lng": -47.73739483545068
+    },
+    {
+        "lat": -15.724018294609081,
+        "lng": -47.50118878076318
+    },
+    {
+        "lat": -15.877300760051735,
+        "lng": -47.502562071778804
+    },
+    {
+        "lat": -15.869375206281301,
+        "lng": -47.74014141748193
+    },
+    {
+        "lat": -15.724018294609081,
+        "lng": -47.73739483545068
+    }
+]
+
+  // Construct the polygon.
+  const poligono = new google.maps.Polygon({
+    paths: rings,
+    strokeColor: "#FF0000",
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: "#FF0000",
+    fillOpacity: 0.35,
+  });
+
+  poligono.setMap(map);
+
+}
+
+window.initMap = initMap;
+
+async function setPoints (){
+
+    let res = await fetch('/getPoints',{
+        headers: {
+      'Content-Type': 'application/json'
+    },
+    }).then(function(response) {
+        return response.json();
+    }).then(json=>{
+        json.recordset.forEach(marker => {
+            
+        new google.maps.Marker({
+            position: {lat: marker.LATITUDE, lng: marker.LONGITUDE},
+            map,
+            title: "Hello World!",
+        });
+
+        });
+    })
+}
+
+setPoints()
+
+</script>

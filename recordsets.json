@@ -1,0 +1,102 @@
+{
+    "recordsets": [
+        [
+            {
+                "ID_INTERFERENCIA": 1,
+                "ID_EMPREENDIMENTO": 60831,
+                "ID_UH": 42,
+                "ID_TIPO_INTERFERENCIA": 1,
+                "ID_TIPO_OUTORGA": 1,
+                "ID_TIPO_ATO": 1,
+                "ID_SITUACAO": 4,
+                "NUM_PROCESSO": "197000303/2007",
+                "NUM_ATO": "686/2018",
+                "VERIFICADO": "OK",
+                "LATITUDE": -15.720301,
+                "LONGITUDE": -48.131629,
+                "SHAPE": {
+                    "srid": 4674,
+                    "version": 1,
+                    "points": [
+                        {
+                            "x": -48.131628589999934,
+                            "y": -15.720300676999955,
+                            "z": null,
+                            "m": null
+                        }
+                    ],
+                    "figures": [
+                        {
+                            "attribute": 1,
+                            "pointOffset": 0
+                        }
+                    ],
+                    "shapes": [
+                        {
+                            "parentOffset": -1,
+                            "figureOffset": 0,
+                            "type": 1
+                        }
+                    ],
+                    "segments": []
+                },
+                "DT_PUBLICACAO": "2018-10-16T00:00:00.000Z",
+                "DT_VENCIMENTO": "2028-10-16T00:00:00.000Z",
+                "OBSERVACAO": "ANTIGO REGISTRO PORÉM FOI OUTORGADO UM VALOR E FINALIDADES MAIOR DO QUE O REQUERIDO",
+                "ID_INTERF_ANTIGO": 1,
+                "NOME": null
+            }
+        ]
+    ],
+    "recordset": [
+        {
+            "ID_INTERFERENCIA": 1,
+            "ID_EMPREENDIMENTO": 60831,
+            "ID_UH": 42,
+            "ID_TIPO_INTERFERENCIA": 1,
+            "ID_TIPO_OUTORGA": 1,
+            "ID_TIPO_ATO": 1,
+            "ID_SITUACAO": 4,
+            "NUM_PROCESSO": "197000303/2007",
+            "NUM_ATO": "686/2018",
+            "VERIFICADO": "OK",
+            "LATITUDE": -15.720301,
+            "LONGITUDE": -48.131629,
+            "SHAPE": {
+                "srid": 4674,
+                "version": 1,
+                "points": [
+                    {
+                        "x": -48.131628589999934,
+                        "y": -15.720300676999955,
+                        "z": null,
+                        "m": null
+                    }
+                ],
+                "figures": [
+                    {
+                        "attribute": 1,
+                        "pointOffset": 0
+                    }
+                ],
+                "shapes": [
+                    {
+                        "parentOffset": -1,
+                        "figureOffset": 0,
+                        "type": 1
+                    }
+                ],
+                "segments": []
+            },
+            "DT_PUBLICACAO": "2018-10-16T00:00:00.000Z",
+            "DT_VENCIMENTO": "2028-10-16T00:00:00.000Z",
+            "OBSERVACAO": "ANTIGO REGISTRO PORÉM FOI OUTORGADO UM VALOR E FINALIDADES MAIOR DO QUE O REQUERIDO",
+            "ID_INTERF_ANTIGO": 1,
+            "NOME": null
+        }
+    ],
+    "output": {},
+    "rowsAffected": [
+        1
+    ]
+}
